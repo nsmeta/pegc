@@ -1,5 +1,6 @@
 const LIB_TESTS = [
-    'memoise'
+    'memoise',
+    'parser'
 ];
 
 const COMBINATORS_TESTS = [
