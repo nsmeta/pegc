@@ -8,9 +8,9 @@ const regex = require('../../lib/parsers/regex');
 const seq = require('../../lib/combinators/seq');
 
 module.exports = () => {
-    describe('inferParser', () => {
+    describe('parser', () => {
 
-        it('inferParser(undefined | null | Number | { ... }) => Exception', () => {
+        it('parser(undefined | null | Number | { ... }) => Exception', () => {
 
             should(() => {
                 inferParser();
@@ -30,7 +30,7 @@ module.exports = () => {
 
         });
 
-        it('inferParser("abc") == string("abc")', () => {
+        it('parser("abc") == string("abc")', () => {
             const pattern = 'abc';
             const input = 'abcdef';
             const parser = inferParser(pattern);
@@ -39,7 +39,7 @@ module.exports = () => {
             should(parser(input)).deepEqual(stringParser(input));
         });
 
-        it('inferParser(/[0-9]+/) == regex(/[0-9]+/)', () => {
+        it('parser(/[0-9]+/) == regex(/[0-9]+/)', () => {
             const pattern = /[0-9]+/;
             const input = '123abc';
             const parser = inferParser(pattern);
@@ -48,7 +48,7 @@ module.exports = () => {
             should(parser(input)).deepEqual(regexParser(input));
         });
 
-        it('inferParser(["hello", " world")) == seq(string("hello"), string("world"))', () => {
+        it('parser(["hello", " world")) == seq(string("hello"), string("world"))', () => {
             const parser = inferParser(['hello', ' world']);
             const seqParser = seq(string('hello'), string(' world'));
             const input = 'hello world123';
