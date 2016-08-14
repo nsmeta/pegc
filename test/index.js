@@ -4,7 +4,8 @@ const LIB_TESTS = [
 ];
 
 const COMBINATORS_TESTS = [
-    'seq'
+    'seq',
+    'alt'
 ];
 
 const PARSERS_TESTS = [
